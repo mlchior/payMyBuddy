@@ -51,8 +51,8 @@ public class PayMyBuddyApplication implements CommandLineRunner {
 		userService.save(user2);**/
 
 
-		compteService.envoyerArgent(1, 2, 100);
-		compteService.getComptes().forEach(compte1 -> System.out.println(compte1.getSolde()));
+		/*compteService.envoyerArgent(1, 2, 100);
+		compteService.getComptes().forEach(compte1 -> System.out.println(compte1.getSolde()));*/
 
 
 		compteService.addMonney(1, 77);

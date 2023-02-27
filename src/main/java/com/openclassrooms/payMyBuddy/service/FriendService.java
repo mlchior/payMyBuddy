@@ -35,10 +35,6 @@ public class FriendService {
     public Friend findFriendByEmail(String adresseEmail) {
         for (User user : userRepository.findAll()){
             if (user.getAdresseEmail().equals(adresseEmail)){
-                Friend friend = new Friend();
-                //setUser = id User de la personne qui est connecté
-               // friend.setUser();
-                friend.setFriend(user);
             }
 
         }

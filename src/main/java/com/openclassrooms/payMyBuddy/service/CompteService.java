@@ -65,6 +65,16 @@ public class CompteService {
         compte.setSolde(compte.getSolde() + montant);
         compteRepository.save(compte);
     }
+    public void retirerArgent(Integer idCompte, float montant) {
+        Compte compte = compteRepository.findById(idCompte).get();
+        if (compte.getSolde() >= montant) {
+            compte.setSolde(compte.getSolde() - montant);
+        }else {
+            System.out.println("Solde insuffisant");
+        }
+        compteRepository.save(compte);
+    }
+
     //calculer la taxe de 0,5% sur le montant de la transaction
     //TODO : fonction pour rajouter de l'argent
 
