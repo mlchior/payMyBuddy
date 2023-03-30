@@ -1,11 +1,8 @@
 package com.openclassrooms.payMyBuddy;
 
-import com.openclassrooms.payMyBuddy.model.Compte;
-import com.openclassrooms.payMyBuddy.model.Friend;
-import com.openclassrooms.payMyBuddy.model.User;
-import com.openclassrooms.payMyBuddy.service.FriendService;
-import com.openclassrooms.payMyBuddy.service.UserService;
+import com.openclassrooms.payMyBuddy.service.FriendServiceImpl;
 import com.openclassrooms.payMyBuddy.service.CompteService;
+import com.openclassrooms.payMyBuddy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -20,7 +17,7 @@ public class PayMyBuddyApplication implements CommandLineRunner {
 	private CompteService compteService;
 
 	@Autowired
-	private FriendService friendService;
+	private FriendServiceImpl friendService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(PayMyBuddyApplication.class, args);
@@ -55,7 +52,7 @@ public class PayMyBuddyApplication implements CommandLineRunner {
 		compteService.getComptes().forEach(compte1 -> System.out.println(compte1.getSolde()));*/
 
 
-		compteService.addMonney(1, 77);
+		compteService.addMoney(1, 77);
 		compteService.getComptes().forEach(compte1 -> System.out.println(compte1.getSolde()));
 
 		/*Friend friend = new Friend();

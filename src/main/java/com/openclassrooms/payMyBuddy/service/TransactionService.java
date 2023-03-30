@@ -9,23 +9,12 @@ import java.util.Optional;
 
 
 @Service
-public class TransactionService {
+public interface TransactionService {
 
-    @Autowired
-    private TransactionRepository transactionRepository;
-
-
-
-    public Iterable<Transaction> getTransactions() {
-        return transactionRepository.findAll();
-    }
-
-    public Optional<Transaction> getTransactionById(Integer id) {
-            return transactionRepository.findById(id);
-    }
-    public Transaction addTransaction(Transaction transaction) {
-        return transactionRepository.save(transaction);
-    }
+    public Iterable<Transaction> getTransactions();
+    public Optional<Transaction> getTransactionById(Integer id);
+    public Transaction addTransaction(Transaction transaction);
+}
 
     // idEmeteur iDdestinataire + montant
-}// object user avec le findbyid et le destinataure
+// object user avec le findbyid et le destinataure

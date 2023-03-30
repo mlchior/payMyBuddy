@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Exemple Thymeleaf avec Bootstrap, jQuery et Modernizr</title>
+
+  <!-- Importation de Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Importation de Modernizr -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+  <!-- Importation du fichier CSS personnalisé -->
+  <link rel="stylesheet" th:href="@{/css/style.css}" href="../static/css/style.css">
+</head>
+<body>
+<div class="container">
+  <h1 class="text-center my-4">Exemple Thymeleaf avec Bootstrap, jQuery et Modernizr</h1>
+  <p th:text="'Bonjour, ' + ${name} + ' !'">Bonjour, utilisateur !</p>
+
+  <!-- Exemple de boutons Bootstrap -->
+  <div class="my-4">
+    <button type="button" class="btn btn-primary">Bouton primaire</button>
+    <button type="button" class="btn btn-secondary">Bouton secondaire</button>
+  </div>
+
+  <!-- Exemple de carte Bootstrap -->
+  <div class="card my-4" style="width: 18rem;">
+    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Image de la carte">
+    <div class="card-body">
+      <h5 class="card-title">Titre de la carte</h5>
+      <p class="card-text">Un exemple de texte rapide pour construire le corps de la carte.</p>
+      <a href="#" class="btn btn-primary">Aller quelque part</a>
+    </div>
+  </div>
+</div>
+
+<!-- Importation de jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<!-- Importation de Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
