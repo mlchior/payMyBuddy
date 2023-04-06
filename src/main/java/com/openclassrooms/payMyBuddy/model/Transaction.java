@@ -24,10 +24,20 @@ public class Transaction {
 
         private float frais;
 
+        //description
+        private String description;
+
+
 
     // taxe 0,5% sur le montant de la transaction
 
+    public String getDescription() {
+        return description;
+    }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
     public User getFriend() {
         return friend;
     }

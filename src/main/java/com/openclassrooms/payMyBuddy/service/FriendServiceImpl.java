@@ -28,20 +28,25 @@ public class FriendServiceImpl {
     }
 
     //TODO: fonction pour rajouter des amis avec a sa liste d'amis avec une adresse email
-   // search by email and add to friend list
+    // search by email and add to friend list
     public Friend addFriend(Friend friend) {
         return friendRepository.save(friend);
     }
 
     public Friend findFriendByEmail(String adresseEmail) {
-        for (User user : userRepository.findAll()){
-            if (user.getAdresseEmail().equals(adresseEmail)){
+        for (User user : userRepository.findAll()) {
+            if (user.getAdresseEmail().equals(adresseEmail)) {
             }
 
         }
         return null;
 
 
-}
-
     }
+
+    // pour un User, recuperer tous les noms des amis
+    public Iterable<Friend> getFriendsByUser(Integer id) {
+        return friendRepository.getFriendsByUser(id);
+    }
+
+}

@@ -63,6 +63,7 @@ public class CompteServiceImpl implements CompteService{
         transaction.setMontant(montant);
         transaction.setDateTime(new Date());
         transaction.setFrais(montantFrais);
+        transaction.setDescription("Envoi d'argent");
         transactionRepository.save(transaction);
 
         return true;

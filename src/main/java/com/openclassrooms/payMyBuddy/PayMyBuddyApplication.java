@@ -55,6 +55,7 @@ public class PayMyBuddyApplication implements CommandLineRunner {
 		compteService.addMoney(1, 77);
 		compteService.getComptes().forEach(compte1 -> System.out.println(compte1.getSolde()));
 
+		friendService.getFriendsByUser(6);
 		/*Friend friend = new Friend();
 		friend.setUser(user);
 		friend.setAdresseEmailFriend("user7@gmail.com");

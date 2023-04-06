@@ -15,7 +15,6 @@ public class TransactionServiceImpl implements TransactionService {
     private TransactionRepository transactionRepository;
 
 
-
     public Iterable<Transaction> getTransactions() {
         return transactionRepository.findAll();
     }
@@ -23,7 +22,11 @@ public class TransactionServiceImpl implements TransactionService {
     public Optional<Transaction> getTransactionById(Integer id) {
         return transactionRepository.findById(id);
     }
+
+    @Override
     public Transaction addTransaction(Transaction transaction) {
-        return transactionRepository.save(transaction);
+        return null;
     }
+
+
 }

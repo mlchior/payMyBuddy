@@ -15,28 +15,117 @@
   <link rel="stylesheet" th:href="@{/css/style.css}" href="../static/css/style.css">
 </head>
 <body>
-<div class="container">
-  <h1 class="text-center my-4">Exemple Thymeleaf avec Bootstrap, jQuery et Modernizr</h1>
-  <p th:text="'Bonjour, ' + ${name} + ' !'">Bonjour, utilisateur !</p>
 
-  <!-- Exemple de boutons Bootstrap -->
-  <div class="my-4">
-    <button type="button" class="btn btn-primary">Bouton primaire</button>
-    <button type="button" class="btn btn-secondary">Bouton secondaire</button>
+<!-- HEADER -->
+<header class="header_area">
+  <div class="container">
+    <div class="header_text">
+      <div class="logo">
+        <a class="btn_style" href="#">Pay My Buddy</a>
+        <div class="humber_menu" onclick=" myFunction(this)">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </div>
+      </div>
+      <div class="menu">
+        <ul id="menu-item" style="display: none;transition: 0.4s;">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Transfer</a></li>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Log off</a></li>
+        </ul>
+      </div>
+    </div>
   </div>
+</header>
 
-  <!-- Exemple de carte Bootstrap -->
-  <div class="card my-4" style="width: 18rem;">
-    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Image de la carte">
-    <div class="card-body">
-      <h5 class="card-title">Titre de la carte</h5>
-      <p class="card-text">Un exemple de texte rapide pour construire le corps de la carte.</p>
-      <a href="#" class="btn btn-primary">Aller quelque part</a>
+<!-- PAGINATION -->
+<div class="pagenation">
+  <div class="container">
+    <div class="pagenation_text">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Transfer</a></li>
+      </ul>
     </div>
   </div>
 </div>
 
-<!-- Importation de jQuery -->
+<!-- PAY AREA -->
+<div class="pay_area">
+  <div class="container">
+    <div class="pay_text">
+      <div class="row g-4">
+        <div class="col-md-10 offset-md-1">
+          <div class="pay_header">
+            <h3>Send Money</h3>
+            <a href="#" class="btn_style btn_send">Add Connection</a>
+          </div>
+          <div class="arrowArea">
+            <select id="cars" name="carlist" form="carform">
+              <option value="friend" th:each="friend : ${friends}" th:value="${friend.id}" th:text="${friend.username}">Select A Connection</option>
+            </select>
+            <div class="input-number">
+              <input type="number" id="inuput-number" value="0;"/>
+              <button class="input-number-increment"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                <path fill="#666" d="M126 32L63 95 0 32z" />
+              </svg></button>
+              <button class="input-number-decrement"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                <path fill="#666" d="M126 32L63 95 0 32z" />
+              </svg></button>
+              <p>&euro;</p>
+            </div>
+            <input class="btn_style" type="submit" value="Pay">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRANSACTION -->
+  <div class="transection">
+    <div class="container">
+      <div class="transection_text">
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
+            <div class="table_design">
+              <h3>My Transactions</h3>
+              <table class="table table-striped">
+                <thead>
+                <tr>
+                  <th>Connections</th>
+                  <th>Description</th>
+                  <th>Amount</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="transaction : ${transactions}">
+                  <td th:text="${transaction.name}">Melchior</td>
+                  <td th:text="${transaction.description}">Restaurant</td>
+                  <td th:text="${transaction.amount} + '&euro;'">10&euro;</td>
+                </tr>
+                </tbody>
+              </table>
+              <ul>
+                <li><a href="#"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Importation de jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 <!-- Importation de Bootstrap JS -->
