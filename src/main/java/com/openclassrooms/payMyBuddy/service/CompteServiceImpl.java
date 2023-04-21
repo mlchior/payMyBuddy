@@ -90,7 +90,13 @@ public class CompteServiceImpl implements CompteService{
         compteRepository.save(compte);
         return true;
     }
+    @Override
+    public float showSolde(Integer idUser) {
+        Float solde = compteRepository.findSoldeByUserId(idUser);
+        return solde;
+    }
+}
 
     //calculer la taxe de 0,5% sur le montant de la transaction
     //TODO : fonction pour rajouter de l'argent
-}
+

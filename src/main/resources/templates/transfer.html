@@ -61,11 +61,21 @@
         <div class="col-md-10 offset-md-1">
           <div class="pay_header">
             <h3>Send Money</h3>
-            <a href="#" class="btn_style btn_send">Add Connection</a>
+            <a href="#" class="btn_style btn_send">Add Connection</a>compte
           </div>
+          <h1>Solde du compte</h1>
+          <p th:text="'Solde : ' + ${solde}"></p>
+          <h2>Solde: <span th:text="${solde}"></span></h2>
+
+          <!--<h3>Liste des amis :</h3>
+          <ul>
+            <li th:each="friend : ${friends}">
+              <span th:text="${friend.friend.id}"></span>
+            </li>
+          </ul>-->
           <div class="arrowArea">
             <select id="cars" name="carlist" form="carform">
-              <option value="friend" th:each="friend : ${friends}" th:value="${friend.id}" th:text="${friend.username}">Select A Connection</option>
+              <option value="friend" th:each="friend : ${friends}" th:value="${compte.user_id}" th:text="${compte.user_id}">Select A Connection</option>
             </select>
             <div class="input-number">
               <input type="number" id="inuput-number" value="0;"/>

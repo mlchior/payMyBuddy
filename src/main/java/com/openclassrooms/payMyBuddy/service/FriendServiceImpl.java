@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 import com.openclassrooms.payMyBuddy.repository.FriendRepository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 @Transactional
-public class FriendServiceImpl {
-
+public class FriendServiceImpl implements FriendService {
     @Autowired
     private FriendRepository friendRepository;
     @Autowired
@@ -27,8 +27,6 @@ public class FriendServiceImpl {
         return friendRepository.findById(id);
     }
 
-    //TODO: fonction pour rajouter des amis avec a sa liste d'amis avec une adresse email
-    // search by email and add to friend list
     public Friend addFriend(Friend friend) {
         return friendRepository.save(friend);
     }
@@ -37,16 +35,11 @@ public class FriendServiceImpl {
         for (User user : userRepository.findAll()) {
             if (user.getAdresseEmail().equals(adresseEmail)) {
             }
-
         }
         return null;
-
-
     }
 
-    // pour un User, recuperer tous les noms des amis
-    public Iterable<Friend> getFriendsByUser(Integer id) {
-        return friendRepository.getFriendsByUser(id);
+    public List<Friend> getFriendsByUser(Integer idUser) {
+        return friendRepository.findAllByUser_Id(idUser);
     }
-
 }

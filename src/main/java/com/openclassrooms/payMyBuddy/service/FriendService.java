@@ -3,6 +3,7 @@ package com.openclassrooms.payMyBuddy.service;
 import com.openclassrooms.payMyBuddy.model.Friend;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 @Service
 public interface FriendService {
@@ -15,10 +16,10 @@ public interface FriendService {
     Friend findFriendByEmail(String adresseEmail);
 
     //recuperer tous les noms des amis d'un user
-    Iterable<Friend> getFriendsByUser(Integer id);
+    List<Friend> getFriendsByUser(Integer idUser);
 
-    //recuperer tous les noms des amis d'un user
-    Iterable<Friend> getFriendsByUserId(Integer id);
+    //recuperer tous les i
+
 
 
 }
