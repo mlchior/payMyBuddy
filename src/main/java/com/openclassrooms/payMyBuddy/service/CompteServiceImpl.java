@@ -58,10 +58,10 @@ public class CompteServiceImpl implements CompteService{
         compteRepository.save(compteEmetteur);
 
         Transaction transaction = new Transaction();
-        transaction.setUser(compteEmetteur.getUser());
-        transaction.setFriend(compteRecepteur.getUser());
-        transaction.setMontant(montant);
-        transaction.setDateTime(new Date());
+        transaction.setSender(compteEmetteur.getUser());
+        transaction.setReceiver(compteRecepteur.getUser());
+        transaction.setAmount(montant);
+        //transaction.setDateTime(new Date());
         transaction.setFrais(montantFrais);
         transaction.setDescription("Envoi d'argent");
         transactionRepository.save(transaction);

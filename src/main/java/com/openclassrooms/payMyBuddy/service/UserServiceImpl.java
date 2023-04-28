@@ -17,9 +17,17 @@ public class UserServiceImpl implements UserService {
     public Iterable<User> getUsers() {
         return userRepository.findAll();
     }
-    public Optional<User> getUserById(Integer id) {
-        return userRepository.findById(id);
+
+    public User getUserById(int idUser) {
+        Optional<User> userOptional = userRepository.findById(idUser);
+
+        if (userOptional.isPresent()) {
+            return userOptional.get();
+        } else {
+            throw new RuntimeException("User not found with id: " + idUser);
+        }
     }
+
 
     //delete user by id
     public void deleteById(Integer id) {

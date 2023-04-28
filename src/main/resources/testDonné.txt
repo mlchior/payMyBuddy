@@ -34,12 +34,8 @@ INSERT INTO friend (id_user, id_user_friend) VALUES
 (6, 3),
 (7, 4);
 
--- Insérer des données dans la table "transaction"
-INSERT INTO transaction (id_user, id_user_reception, montant, date_time, frais, description) VALUES
-(1, 2, 50.00, '2023-04-20 15:30:00', 0, 'Remboursement dû'),
-(1, 3, 100.00, '2023-04-20 16:00:00', 0, 'Achat de nourriture'),
-(2, 1, 75.00, '2023-04-20 17:15:00', 0, 'Remboursement de prêt'),
-(2, 4, 200.00, '2023-04-20 18:30:00', 5, 'Remboursement de dette'),
-(3, 1, 30.00, '2023-04-20 19:45:00', 0, 'Remboursement dû'),
-(3, 6, 50.00, '2023-04-20 20:00:00', 2, 'Achat de cadeau d\'anniversaire'),
-(4, 2, 25.00, '2023-04-20 21:15:00', 0, 'Remboursement de prêt');
+INSERT INTO transaction (id_user, id_user_reception, montant, date_time, frais, description)
+VALUES
+    (14, 15, 50.00, NOW(), 0, 'Remboursement pour le déjeuner'),
+    (14, 15, 25.00, NOW(), 0, 'Achat d'un cadeau pour un ami'),
+    (14, 16, 75.00, NOW(), 0, 'Remboursement d'un prêt');

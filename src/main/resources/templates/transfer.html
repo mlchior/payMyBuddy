@@ -52,6 +52,26 @@
     </div>
   </div>
 </div>
+<!-- Add Connection Modal -->
+<div class="modal fade" id="addConnectionModal" tabindex="-1" aria-labelledby="addConnectionModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addConnectionModalLabel">Add Connection</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="#" th:action="@{/addConnection}" th:object="${friend}" method="post">
+          <div class="form-group">
+            <label for="email">Email address:</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Add Connection</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- PAY AREA -->
 <div class="pay_area">
@@ -61,24 +81,16 @@
         <div class="col-md-10 offset-md-1">
           <div class="pay_header">
             <h3>Send Money</h3>
-            <a href="#" class="btn_style btn_send">Add Connection</a>compte
+            <a href="#" class="btn_style btn_send" data-bs-toggle="modal" data-bs-target="#addConnectionModal">Add Connection</a>
           </div>
-          <h1>Solde du compte</h1>
-          <p th:text="'Solde : ' + ${solde}"></p>
-          <h2>Solde: <span th:text="${solde}"></span></h2>
-
-          <!--<h3>Liste des amis :</h3>
-          <ul>
-            <li th:each="friend : ${friends}">
-              <span th:text="${friend.friend.id}"></span>
-            </li>
-          </ul>-->
           <div class="arrowArea">
-            <select id="cars" name="carlist" form="carform">
-              <option value="friend" th:each="friend : ${friends}" th:value="${compte.user_id}" th:text="${compte.user_id}">Select A Connection</option>
+            <form id="carform" method="post" th:action="@{/transfer/submit}">
+              <select id="selectedFriendId" name="selectedFriendId">
+              <option value="friend">Select A Connection</option>
+              <option th:each="friend : ${friends}" th:value="${friend.id}" th:text="${friend.friend.username}"></option>
             </select>
             <div class="input-number">
-              <input type="number" id="inuput-number" value="0;"/>
+              <input type="number" id="inuput-number" name="amount" value="0;"/>
               <button class="input-number-increment"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
                 <path fill="#666" d="M126 32L63 95 0 32z" />
               </svg></button>
@@ -88,6 +100,7 @@
               <p>&euro;</p>
             </div>
             <input class="btn_style" type="submit" value="Pay">
+            </form>
             </div>
           </div>
         </div>
@@ -113,9 +126,9 @@
                 </thead>
                 <tbody>
                 <tr th:each="transaction : ${transactions}">
-                  <td th:text="${transaction.name}">Melchior</td>
-                  <td th:text="${transaction.description}">Restaurant</td>
-                  <td th:text="${transaction.amount} + '&euro;'">10&euro;</td>
+                  <td th:text="${transaction.sender.username} + ' → ' + ${transaction.receiver.username}">Sender → Receiver</td>
+                  <td th:text="${transaction.description}">Description</td>
+                  <td th:text="${transaction.amount} + '€'">Amount€</td>
                 </tr>
                 </tbody>
               </table>

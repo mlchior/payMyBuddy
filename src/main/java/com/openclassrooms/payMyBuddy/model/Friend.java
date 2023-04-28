@@ -8,6 +8,7 @@ public class Friend {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id_friend")
         private int id;
 
         @ManyToOne

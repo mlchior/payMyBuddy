@@ -2,25 +2,27 @@ package com.openclassrooms.payMyBuddy.model;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 public class Transaction {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id_transaction")
         private Integer id;
 
         @ManyToOne
         @JoinColumn(name = "id_user")
-        private User user;
+        private User sender;
 
         @ManyToOne
         @JoinColumn(name = "id_user_reception")
-        private User friend;
+        private User receiver;
 
-        private float montant;
+        @JoinColumn(name = "amount")
+        private float amount;
 
-        private Date dateTime;
+        private LocalDateTime dateTime;
 
         private float frais;
 
@@ -38,12 +40,12 @@ public class Transaction {
     public void setDescription(String description) {
         this.description = description;
     }
-    public User getFriend() {
-        return friend;
+    public User getReceiver() {
+        return receiver;
     }
 
-    public void setFriend(User friend) {
-        this.friend = friend;
+    public void setReceiver(User receiver) {
+        this.receiver = receiver;
     }
 
     public float getFrais() {
@@ -62,29 +64,29 @@ public class Transaction {
             this.id = id;
         }
 
-        public User getUser() {
-            return user;
+        public User getSender() {
+            return sender;
         }
 
-        public void setUser(User user) {
-            this.user = user;
+        public void setSender(User sender) {
+            this.sender = sender;
         }
 
 
 
-        public float getMontant() {
-            return montant;
+        public float getAmount() {
+            return amount;
         }
 
-        public void setMontant(float montant) {
-            this.montant = montant;
+        public void setAmount(float amount) {
+            this.amount = amount;
         }
 
-        public Date getDateTime() {
+        public LocalDateTime getDateTime() {
             return dateTime;
         }
 
-        public void setDateTime(Date dateTime) {
-            this.dateTime = dateTime;
-        }
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
     }

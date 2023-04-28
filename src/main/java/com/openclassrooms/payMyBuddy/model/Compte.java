@@ -8,6 +8,7 @@ public class Compte {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_compte")
     private int id;
 
     @OneToOne

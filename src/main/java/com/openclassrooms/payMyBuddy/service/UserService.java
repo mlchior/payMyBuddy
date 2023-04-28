@@ -10,7 +10,8 @@ import java.util.Optional;
 @Service
 public interface UserService {
     public Iterable<User> getUsers();
-    public Optional<User> getUserById(Integer id);
+
+    public User getUserById(int userId);
     public void deleteById(Integer id);
     public void deleteByUsername(String username);
     public List<User> findAll();

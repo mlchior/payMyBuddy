@@ -10,6 +10,5 @@ import java.util.List;
 
 @Repository
 public interface FriendRepository extends JpaRepository<Friend, Integer> {
-    List<Friend> findByUserId(int userId);
-    List<Friend> findAllByUser_Id(Integer idUser);
+   List<Friend> findByUser(User user);
 }

@@ -10,6 +10,7 @@ import org.hibernate.Hibernate;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_user")
     private int id;
     @Column(unique = true, nullable = false)
     private String adresseEmail;

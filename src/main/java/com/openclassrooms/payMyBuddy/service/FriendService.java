@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 @Service
 public interface FriendService {
-    Iterable<Friend> getFriends();
+    List<Friend> getFriends(int idUser);
 
     // getAllByUser(User)
 

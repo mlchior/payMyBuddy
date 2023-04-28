@@ -19,9 +19,16 @@ public class FriendServiceImpl implements FriendService {
     @Autowired
     private UserRepository userRepository;
 
-    public Iterable<Friend> getFriends() {
-        return friendRepository.findAll();
-    }
+    @Autowired
+    private UserService userService;
+
+    public List<Friend> getFriends(int idUser) {
+        User user = userService.getUserById(idUser);
+        return friendRepository.findByUser(user);
+        }
+
+
+
 
     public Optional<Friend> getFriendById(Integer id) {
         return friendRepository.findById(id);
@@ -40,6 +47,7 @@ public class FriendServiceImpl implements FriendService {
     }
 
     public List<Friend> getFriendsByUser(Integer idUser) {
-        return friendRepository.findAllByUser_Id(idUser);
+        return friendRepository.findByUser(userService.getUserById(idUser));
     }
 }
+
