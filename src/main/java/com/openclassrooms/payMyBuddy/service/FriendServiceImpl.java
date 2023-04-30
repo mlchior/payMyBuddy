@@ -37,10 +37,13 @@ public class FriendServiceImpl implements FriendService {
     public Friend addFriend(Friend friend) {
         return friendRepository.save(friend);
     }
-
+    @Override
+    public void saveFriend(Friend newFriend) {
+        friendRepository.save(newFriend);
+    }
     public Friend findFriendByEmail(String adresseEmail) {
         for (User user : userRepository.findAll()) {
-            if (user.getAdresseEmail().equals(adresseEmail)) {
+            if (user.getEmail().equals(adresseEmail)) {
             }
         }
         return null;

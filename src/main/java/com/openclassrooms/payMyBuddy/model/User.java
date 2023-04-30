@@ -1,8 +1,6 @@
 package com.openclassrooms.payMyBuddy.model;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import jakarta.persistence.*;
-import org.hibernate.Hibernate;
 
 
 @Entity
@@ -12,8 +10,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user")
     private int id;
+    @JoinColumn(name = "email")
     @Column(unique = true, nullable = false)
-    private String adresseEmail;
+    private String email;
     @Column(nullable = false)
     private String motDePasse;
     @Column(nullable = false)
@@ -29,12 +28,12 @@ public class User {
         this.id = id;
     }
 
-    public String getAdresseEmail() {
-        return adresseEmail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setAdresseEmail(String adresseEmail) {
-        this.adresseEmail = adresseEmail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getMotDePasse() {

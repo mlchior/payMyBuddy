@@ -18,6 +18,8 @@ public interface FriendService {
     //recuperer tous les noms des amis d'un user
     List<Friend> getFriendsByUser(Integer idUser);
 
+    void saveFriend(Friend newFriend);
+
     //recuperer tous les i
 
 

@@ -17,6 +17,10 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query("SELECT u FROM User u WHERE u.id = :idUser")
     Optional<User> findByIdUser(@Param("idUser") int idUser);
 
+    User findByEmail(String email);
+
+    
+   
 
     /*boolean adresseEmailUnique(String adresseEmail);
 

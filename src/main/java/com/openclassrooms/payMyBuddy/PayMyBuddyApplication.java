@@ -28,7 +28,7 @@ public class PayMyBuddyApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// test User
 		/*User user = new User();
-		user.setAdresseEmail("user1gd@gmail.com");
+		user.setEmail("user1gd@gmail.com");
 		user.setMotDePasse("useruser");
 		user.setUsername("user5");
 		userService.save(user);
@@ -42,7 +42,7 @@ public class PayMyBuddyApplication implements CommandLineRunner {
 		compteService.getComptes().forEach(compte1 -> System.out.println(compte1.getSolde()));
 
 		User user2 = new User();
-		user2.setAdresseEmail("user32@gmail.com");
+		user2.setEmail("user32@gmail.com");
 		user2.setMotDePasse("useruser");
 		user2.setUsername("user2");
 		userService.save(user2);**/

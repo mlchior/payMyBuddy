@@ -15,7 +15,11 @@
   <link rel="stylesheet" th:href="@{/css/style.css}" href="../static/css/style.css">
 </head>
 <body>
-
+<!-- creer un petit formulaire pour ajouter un ami en tapant son email -->
+<!--<form id="addConnectionForm" method="post" th:action="@{/transfer/addconnection}">
+  <input type="text" id="email" name="email" placeholder="Email">
+  <input type="submit" value="Add">
+</form> -->
 <!-- HEADER -->
 <header class="header_area">
   <div class="container">
@@ -52,26 +56,7 @@
     </div>
   </div>
 </div>
-<!-- Add Connection Modal -->
-<div class="modal fade" id="addConnectionModal" tabindex="-1" aria-labelledby="addConnectionModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addConnectionModalLabel">Add Connection</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="#" th:action="@{/addConnection}" th:object="${friend}" method="post">
-          <div class="form-group">
-            <label for="email">Email address:</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
-          </div>
-          <button type="submit" class="btn btn-primary">Add Connection</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 <!-- PAY AREA -->
 <div class="pay_area">
@@ -151,7 +136,10 @@
   <!-- Importation de jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
+
+
 <!-- Importation de Bootstrap JS -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>

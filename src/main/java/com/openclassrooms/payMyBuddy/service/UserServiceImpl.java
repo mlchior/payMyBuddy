@@ -44,11 +44,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public Integer save(User user) {
         if (user != null) {
-            /**if (adresseEmailUnique(user.getAdresseEmail())){
+            /**if (adresseEmailUnique(user.getEmail())){
              return null;
              }*/
             User savedUser = new User();
-            savedUser.setAdresseEmail(user.getAdresseEmail());
+            savedUser.setEmail(user.getEmail());
             savedUser.setMotDePasse(user.getMotDePasse());
             savedUser.setUsername(user.getUsername());
             userRepository.save(savedUser);
