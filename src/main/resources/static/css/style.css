@@ -75,6 +75,11 @@ h3 {
 .logo a {
 
 }
+menu{
+    display: flex;
+    list-style-type: none;
+    margin: 0; padding: 0; align-items: center; transition: 0.4s;
+}
 .menu ul{
     display: -webkit-box;
     display: -ms-flexbox;
@@ -203,6 +208,13 @@ h3 {
 .arrowArea > .btn_style {
     padding: 13px 100px;
     border: none;
+}
+
+.form-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 /* humber menu area start  */

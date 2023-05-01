@@ -12,7 +12,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 
   <!-- Importation du fichier CSS personnalisé -->
-  <link rel="stylesheet" th:href="@{/css/style.css}" href="../static/css/style.css">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 <!-- creer un petit formulaire pour ajouter un ami en tapant son email -->
@@ -33,12 +33,12 @@
         </div>
       </div>
       <div class="menu">
-        <ul id="menu-item" style="display: none;transition: 0.4s;">
+        <ul id="menu-item">
           <li><a href="#">Home</a></li>
           <li><a href="#">Transfer</a></li>
           <li><a href="#">Profile</a></li>
           <li><a href="#">Contact</a></li>
-          <li><a href="#">Log off</a></li>
+          <li><a th:href="@{/logout}" href="/logout">Log off</a></li>
         </ul>
       </div>
     </div>
@@ -70,23 +70,29 @@
           </div>
           <div class="arrowArea">
             <form id="carform" method="post" th:action="@{/transfer/submit}">
-              <select id="selectedFriendId" name="selectedFriendId">
-              <option value="friend">Select A Connection</option>
-              <option th:each="friend : ${friends}" th:value="${friend.id}" th:text="${friend.friend.username}"></option>
-            </select>
-            <div class="input-number">
-              <input type="number" id="inuput-number" name="amount" value="0;"/>
-              <button class="input-number-increment"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-                <path fill="#666" d="M126 32L63 95 0 32z" />
-              </svg></button>
-              <button class="input-number-decrement"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-                <path fill="#666" d="M126 32L63 95 0 32z" />
-              </svg></button>
-              <p>&euro;</p>
-            </div>
-            <input class="btn_style" type="submit" value="Pay">
+              <div class="form-container" th:style="">
+                <select id="selectedFriendId" name="selectedFriendId">
+                  <option value="friend">Select A Connection</option>
+                  <option th:each="friend : ${friends}" th:value="${friend.id}" th:text="${friend.friend.username}"></option>
+                </select>
+                <div class="input-number">
+                  <input type="number" id="inuput-number" name="amount" value="0;" />
+                  <button class="input-number-increment">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                      <path fill="#666" d="M126 32L63 95 0 32z" />
+                    </svg>
+                  </button>
+                  <button class="input-number-decrement">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                      <path fill="#666" d="M126 32L63 95 0 32z" />
+                    </svg>
+                  </button>
+                  <p>&euro;</p>
+                </div>
+                <input class="btn_style" type="submit" value="Pay" />
+              </div>
             </form>
-            </div>
+          </div>
           </div>
         </div>
       </div>
@@ -132,7 +138,10 @@
     </div>
   </div>
 </div>
-
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/script.js}"></script>
+<script th:src="@{/js/popper}"></script>
+<script th:src="@{/js/Modernizr}"></script>
   <!-- Importation de jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 

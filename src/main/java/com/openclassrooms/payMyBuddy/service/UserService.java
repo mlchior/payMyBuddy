@@ -17,6 +17,9 @@ public interface UserService {
     public List<User> findAll();
     public Integer save(User user);
 
+    public User getUserByEmail(String email);
+
+    public void updateExistingPasswords();
 
 
 

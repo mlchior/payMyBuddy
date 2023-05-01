@@ -3,6 +3,8 @@ package com.openclassrooms.payMyBuddy.service;
 import com.openclassrooms.payMyBuddy.model.User;
 import com.openclassrooms.payMyBuddy.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +16,23 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
+    @Override
+    public User getUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+    public void updateExistingPasswords() {
+        List<User> users = userRepository.findAll();
+
+        for (User user : users) {
+            String plainPassword = user.getMotDePasse();
+            String hashedPassword = passwordEncoder.encode(plainPassword);
+            user.setMotDePasse(hashedPassword);
+            userRepository.save(user);
+        }
+    }
     public Iterable<User> getUsers() {
         return userRepository.findAll();
     }

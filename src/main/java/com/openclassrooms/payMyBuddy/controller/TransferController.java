@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.core.Authentication;
 
 import java.util.*;
 
@@ -30,12 +31,15 @@ public class TransferController {
     @Autowired
     private UserService userService;
 
-
     @GetMapping("/transfer")
-    public String showTransfer(Model model) {
-        List<Friend> friends = friendService.getFriends(14);
+    public String showTransfer(Model model, Authentication authentication) {
+        User currentUser = userService.getUserByEmail(authentication.getName());
+        int currentUserId = currentUser.getId();
+        List<Friend> friends = friendService.getFriends(currentUserId);
+        System.out.println("currentUserId: " + currentUserId);
+
         model.addAttribute("friends", friends);
-        List<Transaction> transactions = transactionService.getTransactionsByUserId(14);
+        List<Transaction> transactions = transactionService.getTransactionsByUserId(currentUserId);
         model.addAttribute("transactions", transactions);
         return "transfer";
     }
@@ -44,7 +48,7 @@ public class TransferController {
     public String submitTransfer(@RequestParam("selectedFriendId") int friendId,
                                  @RequestParam("amount") float amount,
                                  Model model) {
-        User sender = userService.getUserById(14);
+        User sender = userService.getUserById(2);
         User receiver = friendService.getFriendById(friendId).get().getFriend();
 
         transactionService.createTransaction(sender, receiver, amount);

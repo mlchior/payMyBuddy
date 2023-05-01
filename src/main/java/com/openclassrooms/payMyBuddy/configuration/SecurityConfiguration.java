@@ -23,10 +23,9 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -34,6 +33,13 @@ public class SecurityConfiguration {
                         .anyRequest().authenticated()
                 )
                 .formLogin()
+                //after login, go to /transfer
+                .defaultSuccessUrl("/transfer", true)
+                .and()
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login?logout")
+                .permitAll()
                 .and()
                 .httpBasic();
         return http.build();
