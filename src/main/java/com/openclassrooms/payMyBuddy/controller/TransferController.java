@@ -33,9 +33,9 @@ public class TransferController {
 
     @GetMapping("/transfer")
     public String showTransfer(Model model) {
-        List<Friend> friends = friendService.getFriends(14);
+        List<Friend> friends = friendService.getFriends(1);
         model.addAttribute("friends", friends);
-        List<Transaction> transactions = transactionService.getTransactionsByUserId(14);
+        List<Transaction> transactions = transactionService.getTransactionsByUserId(1);
         model.addAttribute("transactions", transactions);
         return "transfer";
     }
@@ -44,7 +44,7 @@ public class TransferController {
     public String submitTransfer(@RequestParam("selectedFriendId") int friendId,
                                  @RequestParam("amount") float amount,
                                  Model model) {
-        User sender = userService.getUserById(14);
+        User sender = userService.getUserById(2);
         User receiver = friendService.getFriendById(friendId).get().getFriend();
 
         transactionService.createTransaction(sender, receiver, amount);
