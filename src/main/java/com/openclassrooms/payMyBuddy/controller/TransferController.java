@@ -32,29 +32,46 @@ public class TransferController {
     private UserService userService;
 
     @GetMapping("/transfer")
-    public String showTransfer(Model model, Authentication authentication) {
+    public String showTransfer(Model model, Authentication authentication,
+                               @RequestParam(value = "page", defaultValue = "1") int page) {
         User currentUser = userService.getUserByEmail(authentication.getName());
         int currentUserId = currentUser.getId();
         List<Friend> friends = friendService.getFriends(currentUserId);
-        System.out.println("currentUserId: " + currentUserId);
 
         model.addAttribute("friends", friends);
-        List<Transaction> transactions = transactionService.getTransactionsByUserId(currentUserId);
+        List<Transaction> transactions = transactionService.getTransactionsByUserId(currentUserId, page, 5);
         model.addAttribute("transactions", transactions);
+        int totalPages = transactionService.getTransactionPageCountByUserId(currentUserId, 5);
+        model.addAttribute("totalPages", totalPages);
+        model.addAttribute("currentPage", page);
         return "transfer";
     }
 
     @PostMapping("/transfer/submit")
     public String submitTransfer(@RequestParam("selectedFriendId") int friendId,
                                  @RequestParam("amount") float amount,
-                                 Model model) {
-        User sender = userService.getUserById(2);
+                                 Model model, Authentication authentication) {
+        User currentUser = userService.getUserByEmail(authentication.getName());
+        int currentUserId = currentUser.getId();
+        User sender = userService.getUserById(currentUserId);
         User receiver = friendService.getFriendById(friendId).get().getFriend();
 
         transactionService.createTransaction(sender, receiver, amount);
 
         return "redirect:/transfer";
     }
+    @PostMapping("/transfer/addConnection")
+    public String addConnection(@RequestParam("email") String email, Model model, Authentication authentication) {
+        User currentUser = userService.getUserByEmail(authentication.getName());
+        int currentUserId = currentUser.getId();
+        User friend = userService.getUserByEmail(email);
+        friendService.createFriend(currentUserId, friend.getId());
+
+
+        return "redirect:/transfer";
+    }
+
+
 
 
 

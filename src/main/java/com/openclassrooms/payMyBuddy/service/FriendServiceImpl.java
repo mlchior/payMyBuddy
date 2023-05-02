@@ -27,7 +27,12 @@ public class FriendServiceImpl implements FriendService {
         return friendRepository.findByUser(user);
         }
 
-
+    public void createFriend(int currentUserId, int id) {
+        Friend friend = new Friend();
+        friend.setUser(userService.getUserById(currentUserId));
+        friend.setFriend(userService.getUserById(id));
+        friendRepository.save(friend);
+    }
 
 
     public Optional<Friend> getFriendById(Integer id) {

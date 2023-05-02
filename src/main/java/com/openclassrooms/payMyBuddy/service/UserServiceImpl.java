@@ -23,6 +23,8 @@ public class UserServiceImpl implements UserService {
     public User getUserByEmail(String email) {
         return userRepository.findByEmail(email);
     }
+
+    @Override
     public void updateExistingPasswords() {
         List<User> users = userRepository.findAll();
 

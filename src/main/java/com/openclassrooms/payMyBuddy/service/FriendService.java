@@ -20,6 +20,9 @@ public interface FriendService {
 
     void saveFriend(Friend newFriend);
 
+    void createFriend(int currentUserId, int id);
+
+
     //recuperer tous les i
 
 

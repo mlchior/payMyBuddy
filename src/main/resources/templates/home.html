@@ -98,64 +98,64 @@
               </div>
             </form>
           </div>
-          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- TRANSACTION -->
-  <div class="transection">
-    <div class="container">
-      <div class="transection_text">
-        <div class="row">
-          <div class="col-md-10 offset-md-1">
-            <div class="table_design">
-              <h3>My Transactions</h3>
-              <table class="table table-striped">
-                <thead>
-                <tr>
-                  <th>Connections</th>
-                  <th>Description</th>
-                  <th>Amount</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="transaction : ${transactions}">
-                  <td th:text="${transaction.sender.username} + ' → ' + ${transaction.receiver.username}">Sender → Receiver</td>
-                  <td th:text="${transaction.description}">Description</td>
-                  <td th:text="${transaction.amount} + '€'">Amount€</td>
-                </tr>
-                </tbody>
-              </table>
-              <ul>
-                <li>
-                  <a th:href="@{/transfer(page=${currentPage - 1})}" href="#">
-                    <i class="fa fa-angle-double-left" aria-hidden="true"></i>
-                  </a>
-                </li>
-                <li th:each="pageNumber : ${#numbers.sequence(1, totalPages)}">
-                  <a th:href="@{/transfer(page=${pageNumber})}" th:text="${pageNumber}">1</a>
-                </li>
-                <li>
-                  <a th:href="@{/transfer(page=${currentPage + 1})}" href="#">
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                  </a>
-                </li>
-              </ul>
+<!-- TRANSACTION -->
+<div class="transection">
+  <div class="container">
+    <div class="transection_text">
+      <div class="row">
+        <div class="col-md-10 offset-md-1">
+          <div class="table_design">
+            <h3>My Transactions</h3>
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th>Connections</th>
+                <th>Description</th>
+                <th>Amount</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr th:each="transaction : ${transactions}">
+                <td th:text="${transaction.sender.username} + ' → ' + ${transaction.receiver.username}">Sender → Receiver</td>
+                <td th:text="${transaction.description}">Description</td>
+                <td th:text="${transaction.amount} + '€'">Amount€</td>
+              </tr>
+              </tbody>
+            </table>
+            <ul>
+              <li>
+                <a th:href="@{/transfer(page=${currentPage - 1})}" href="#">
+                  <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li th:each="pageNumber : ${#numbers.sequence(1, totalPages)}">
+                <a th:href="@{/transfer(page=${pageNumber})}" th:text="${pageNumber}">1</a>
+              </li>
+              <li>
+                <a th:href="@{/transfer(page=${currentPage + 1})}" href="#">
+                  <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
 
-            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+</div>
 <script th:src="@{/js/bootstrap.min.js}"></script>
 <script th:src="@{/js/script.js}"></script>
 <script th:src="@{/js/popper}"></script>
 <script th:src="@{/js/Modernizr}"></script>
-  <!-- Importation de jQuery -->
+<!-- Importation de jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 

@@ -15,3 +15,11 @@ pas de reciprocité dans la liste d'amis
 
 adconnexion juste une pop in
 
+// session mardi
+creer un compte
+test auto
+ajouter un ami avec une adresse mail
+
+ bouton + - = submit a modifier
+
+

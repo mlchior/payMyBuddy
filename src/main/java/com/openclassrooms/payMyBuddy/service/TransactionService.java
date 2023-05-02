@@ -19,7 +19,8 @@ public interface TransactionService {
     public Optional<Transaction> getTransactionById(Integer id);
     public Transaction addTransaction(Transaction transaction);
 
-    List<Transaction> getTransactionsByUserId(Integer userId);
+    List<Transaction> getTransactionsByUserId(Integer userId, int page, int size);
+    public int getTransactionPageCountByUserId(int userId, int size);
 }
 
     // idEmeteur iDdestinataire + montant

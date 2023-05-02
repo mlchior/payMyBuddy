@@ -28,7 +28,15 @@ decrementBtn.addEventListener("click", function () {
   }
   input.value = value;
 });
+document.addEventListener('DOMContentLoaded', function() {
+  const addConnectionButton = document.querySelector('.btn_style');
+  const addConnectionForm = document.getElementById('addConnectionForm');
 
+  addConnectionButton.addEventListener('click', function(event) {
+    event.preventDefault();
+    addConnectionForm.classList.remove('hidden');
+  });
+});
 //blur if the length is less than min
 input.addEventListener("blur", function () {
   if (input.value.length === 0 || Math.sign(input.value) == -1) {
