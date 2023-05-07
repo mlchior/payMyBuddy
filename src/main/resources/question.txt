@@ -17,9 +17,12 @@ adconnexion juste une pop in
 
 // session mardi
 creer un compte
+page home avec ajout et retrait d'argent
+page de connexion
 test auto
-ajouter un ami avec une adresse mail
 
- bouton + - = submit a modifier
 
+
+
+// test unitaire et test d'integration
 

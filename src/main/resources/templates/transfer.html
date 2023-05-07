@@ -15,45 +15,10 @@
   <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-
 <!-- HEADER -->
-<header class="header_area">
-  <div class="container">
-    <div class="header_text">
-      <div class="logo">
-        <a class="btn_style" href="#">Pay My Buddy</a>
-        <div class="humber_menu" onclick=" myFunction(this)">
-          <div class="bar1"></div>
-          <div class="bar2"></div>
-          <div class="bar3"></div>
-        </div>
-      </div>
-      <div class="menu">
-        <ul id="menu-item">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Transfer</a></li>
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a th:href="@{/logout}" href="/logout">Log off</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</header>
-
+<div th:insert="header::header"></div>
 <!-- PAGINATION -->
-<div class="pagenation">
-  <div class="container">
-    <div class="pagenation_text">
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Transfer</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-
+<div th:insert="pagination::pagination"></div>
 <!-- PAY AREA -->
 <div class="pay_area">
   <div class="container">
@@ -104,53 +69,9 @@
     </div>
   </div>
 
-  <!-- TRANSACTION -->
-  <div class="transection">
-    <div class="container">
-      <div class="transection_text">
-        <div class="row">
-          <div class="col-md-10 offset-md-1">
-            <div class="table_design">
-              <h3>My Transactions</h3>
-              <table class="table table-striped">
-                <thead>
-                <tr>
-                  <th>Connections</th>
-                  <th>Description</th>
-                  <th>Amount</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="transaction : ${transactions}">
-                  <td th:text="${transaction.sender.username} + ' → ' + ${transaction.receiver.username}">Sender → Receiver</td>
-                  <td th:text="${transaction.description}">Description</td>
-                  <td th:text="${transaction.amount} + '€'">Amount€</td>
-                </tr>
-                </tbody>
-              </table>
-              <ul>
-                <li>
-                  <a th:href="@{/transfer(page=${currentPage - 1})}" href="#">
-                    <i class="fa fa-angle-double-left" aria-hidden="true"></i>
-                  </a>
-                </li>
-                <li th:each="pageNumber : ${#numbers.sequence(1, totalPages)}">
-                  <a th:href="@{/transfer(page=${pageNumber})}" th:text="${pageNumber}">1</a>
-                </li>
-                <li>
-                  <a th:href="@{/transfer(page=${currentPage + 1})}" href="#">
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                  </a>
-                </li>
-              </ul>
+<!-- TRANSACTION -->
+<div th:insert="transaction::transaction"></div>
 
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 <script th:src="@{/js/bootstrap.min.js}"></script>
 <script th:src="@{/js/script.js}"></script>
 <script th:src="@{/js/popper}"></script>

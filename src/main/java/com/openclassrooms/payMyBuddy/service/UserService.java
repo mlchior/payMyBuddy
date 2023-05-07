@@ -22,6 +22,9 @@ public interface UserService {
     public void updateExistingPasswords();
 
 
+    public void saveUser(User user);
+
+
 
 
         }

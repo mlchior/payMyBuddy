@@ -77,6 +77,9 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
+    public void saveUser(User user) {
+        userRepository.save(user);
+    }
     // verify if the AdresseEmail is already used by another user
     /*public boolean adresseEmailUnique(String adresseEmail) {
         return userRepository.existsByAdresseEmail(adresseEmail);

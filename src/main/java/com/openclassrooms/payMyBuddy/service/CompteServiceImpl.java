@@ -23,78 +23,33 @@ public class CompteServiceImpl implements CompteService{
     private FriendRepository friendRepository;
 
     @Override
-    public Iterable<Compte> getComptes() {
-        return compteRepository.findAll();
-    }
-
-    @Override
-    public Optional<Compte> getCompteById(Integer id) {
-        return compteRepository.findById(id);
-    }
-
-    @Override
     public  Compte addCompte(Compte compte) {
         return compteRepository.save(compte);
     }
-
-    // create un service pour envouer de l'argent d'un compte à un autre
     @Override
-    public Boolean envoyerArgent(Integer idCompteEmetteur, Integer idCompteRecepteur, float montant) {
-
-        float montantFrais = montant * 0.005f;
-        Compte compteEmetteur = compteRepository.findById(idCompteEmetteur).get();
-        Compte compteRecepteur = compteRepository.findById(idCompteRecepteur).get();
-        // verifier si le compte emeteur a le compte receveur dans sa liste d'amis
-
-
-        if (compteEmetteur.getSolde() >= montant) {
-            compteEmetteur.setSolde(compteEmetteur.getSolde() - montant);
-        }else {
-            System.out.println("Solde insuffisant");
-        }
-        //calculer la taxe de 0,5% sur le montant de la transaction
-
-        compteRecepteur.setSolde(compteRecepteur.getSolde() + (montant - montantFrais));
-        compteRepository.save(compteEmetteur);
-
-        Transaction transaction = new Transaction();
-        transaction.setSender(compteEmetteur.getUser());
-        transaction.setReceiver(compteRecepteur.getUser());
-        transaction.setAmount(montant);
-        //transaction.setDateTime(new Date());
-        transaction.setFrais(montantFrais);
-        transaction.setDescription("Envoi d'argent");
-        transactionRepository.save(transaction);
-
-        return true;
+    public float getAccountBalance(int currentUserId) {
+        Float accountBalance = compteRepository.findSoldeByUserId(currentUserId);
+        return accountBalance;
     }
 
-
-
     @Override
-    public Boolean addMoney(Integer idCompte, float montant) {
-        Compte compte = compteRepository.findById(idCompte).get();
-        compte.setSolde(compte.getSolde() + montant);
+    public void addAmount(int currentUserId, float amount) {
+        Compte compte = compteRepository.findByUserId(currentUserId);
+        compte.setSolde(compte.getSolde() + amount);
         compteRepository.save(compte);
-        return true;
     }
-
     @Override
-    public Boolean retirerArgent(Integer idCompte, float montant) {
-        Compte compte = compteRepository.findById(idCompte).get();
-        if (compte.getSolde() >= montant) {
-            compte.setSolde(compte.getSolde() - montant);
+    public boolean withdrawAmount(int currentUserId, float amount) {
+        Compte compte = compteRepository.findByUserId(currentUserId);
+        if (compte.getSolde() >= amount) {
+            compte.setSolde(compte.getSolde() - amount);
         }else {
             System.out.println("Solde insuffisant");
         }
         compteRepository.save(compte);
         return true;
     }
-    @Override
-    public float showSolde(Integer idUser) {
-        Float solde = compteRepository.findSoldeByUserId(idUser);
-        return solde;
-    }
+
 }
 
     //calculer la taxe de 0,5% sur le montant de la transaction

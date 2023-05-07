@@ -1,0 +1,46 @@
+<!-- header.html -->
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Exemple Thymeleaf avec Bootstrap, jQuery et Modernizr</title>
+
+  <!-- Importation de Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Importation de Modernizr -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+  <!-- Importation du fichier CSS personnalisé -->
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+</head>
+<body>
+<header class="header_area" th:fragment="header">
+  <header class="header_area">
+    <div class="container">
+      <div class="header_text">
+        <div class="logo">
+          <a class="btn_style" href="#">Pay My Buddy</a>
+          <div class="humber_menu" onclick=" myFunction(this)">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+          </div>
+        </div>
+        <div class="menu">
+          <ul id="menu-item">
+            <li><a th:href="@{/home}" href="#">Home</a></li>
+            <li><a th:href="@{/transfer}" href="#">Transfer</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a th:href="@{/logout}" href="/logout">Log off</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+</header>
+</body>
+</html>

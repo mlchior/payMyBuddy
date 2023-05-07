@@ -21,6 +21,8 @@ public interface TransactionService {
 
     List<Transaction> getTransactionsByUserId(Integer userId, int page, int size);
     public int getTransactionPageCountByUserId(int userId, int size);
+
+
 }
 
     // idEmeteur iDdestinataire + montant

@@ -13,5 +13,8 @@ CompteRepository extends JpaRepository<Compte, Integer> {
     Float findSoldeByUserId(@Param("userId") Integer userId);
 
 
+    Compte findByUserId(int currentUserId);
+
+
 
 }

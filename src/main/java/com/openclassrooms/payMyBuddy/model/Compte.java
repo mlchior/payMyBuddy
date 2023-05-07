@@ -18,10 +18,6 @@ public class Compte {
     @Column(name = "solde")
     private float solde;
 
-
-
-
-
     public int getId() {
         return id;
     }
