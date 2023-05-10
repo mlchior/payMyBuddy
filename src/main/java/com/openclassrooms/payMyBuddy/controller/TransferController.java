@@ -31,7 +31,17 @@ public class TransferController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/transfer")
+
+        @Autowired
+        public TransferController(CompteService compteService, FriendService friendService, TransactionService transactionService, UserService userService) {
+            this.compteService = compteService;
+            this.friendService = friendService;
+            this.transactionService = transactionService;
+            this.userService = userService;
+        }
+
+
+        @GetMapping("/transfer")
     public String showTransfer(Model model, Authentication authentication,
                                @RequestParam(value = "page", defaultValue = "1") int page) {
         User currentUser = userService.getUserByEmail(authentication.getName());

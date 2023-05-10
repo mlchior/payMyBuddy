@@ -20,6 +20,13 @@ public class User {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
     private Compte compte;
 
+public User() {
+    }
+    public User(String email, String motDePasse, String username) {
+        this.email = email;
+        this.motDePasse = motDePasse;
+        this.username = username;
+    }
     public int getId() {
         return id;
     }

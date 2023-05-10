@@ -38,8 +38,6 @@ public class SecurityConfiguration {
                         .anyRequest().authenticated()
                 )
                 .formLogin()
-                    .loginPage("/login")
-                    .permitAll()
                 .defaultSuccessUrl("/transfer", true)
                 .and()
                 .logout()

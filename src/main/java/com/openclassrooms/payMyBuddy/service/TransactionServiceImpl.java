@@ -3,6 +3,7 @@ package com.openclassrooms.payMyBuddy.service;
 import com.openclassrooms.payMyBuddy.model.Compte;
 import com.openclassrooms.payMyBuddy.model.Transaction;
 import com.openclassrooms.payMyBuddy.model.User;
+import com.openclassrooms.payMyBuddy.repository.CompteRepository;
 import com.openclassrooms.payMyBuddy.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,27 @@ public class TransactionServiceImpl implements TransactionService {
     @Autowired
     private TransactionRepository transactionRepository;
 
+    @Autowired
+    private CompteService compteService;
+
+    @Autowired
+    private CompteRepository compteRepository;
+
+
     public void createTransaction(User sender, User receiver, float amount) {
+        // account balance check
+        Compte compteEmetteur = compteService.getCompteByUserId(sender.getId());
+        Compte compteReceveur = compteService.getCompteByUserId(receiver.getId());
+
+        if (compteEmetteur.getSolde() < amount) {
+            System.out.println("Solde insuffisant");
+            return;
+        }
+
+        compteEmetteur.setSolde(compteEmetteur.getSolde() - amount);
+        compteRepository.save(compteEmetteur);
+        compteReceveur.setSolde(compteReceveur.getSolde() + amount);
+        compteRepository.save(compteReceveur);
 
         Transaction transaction = new Transaction();
         transaction.setSender(sender);
@@ -31,6 +52,7 @@ public class TransactionServiceImpl implements TransactionService {
         transaction.setFrais(amount * 0.005f);
         transactionRepository.save(transaction);
     }
+
     public List<Transaction> getTransactionsByUserId(Integer userId, int page, int size) {
         Pageable pageable = PageRequest.of(page - 1, size, Sort.by(Sort.Direction.DESC, "dateTime"));
         Page<Transaction> transactionPage = transactionRepository.findBySenderIdOrReceiverId(userId, userId, pageable);
@@ -53,10 +75,10 @@ public class TransactionServiceImpl implements TransactionService {
         return transactionRepository.findById(id);
     }
 
+
+
     @Override
     public Transaction addTransaction(Transaction transaction) {
-        return null;
+        return transactionRepository.save(transaction);
     }
-
-
 }

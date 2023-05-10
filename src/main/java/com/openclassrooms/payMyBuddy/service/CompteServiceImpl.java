@@ -32,6 +32,7 @@ public class CompteServiceImpl implements CompteService{
         return accountBalance;
     }
 
+
     @Override
     public void addAmount(int currentUserId, float amount) {
         Compte compte = compteRepository.findByUserId(currentUserId);
@@ -48,6 +49,11 @@ public class CompteServiceImpl implements CompteService{
         }
         compteRepository.save(compte);
         return true;
+    }
+
+    @Override
+    public Compte getCompteByUserId(int id) {
+        return compteRepository.findByUserId(id);
     }
 
 }

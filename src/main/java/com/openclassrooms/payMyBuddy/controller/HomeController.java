@@ -42,8 +42,6 @@ public class HomeController {
         float accountBalance = compteService.getAccountBalance(currentUserId);
         model.addAttribute("accountBalance", accountBalance);
 
-        // Récupérer la liste des amis et l'ajouter au modèle
-
         // Récupérer la liste des transactions et l'ajouter au modèle
         List<Transaction> transactions = transactionService.getTransactionsByUserId(currentUserId, page, 5);
         model.addAttribute("transactions", transactions);

@@ -411,3 +411,9 @@ menu{
 .hidden {
     display: none;
 }
+.account_area {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}

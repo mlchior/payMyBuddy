@@ -49,6 +49,7 @@ public class FriendServiceImpl implements FriendService {
     public Friend findFriendByEmail(String adresseEmail) {
         for (User user : userRepository.findAll()) {
             if (user.getEmail().equals(adresseEmail)) {
+                return friendRepository.findByFriend(user);
             }
         }
         return null;

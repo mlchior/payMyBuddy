@@ -13,5 +13,6 @@ public interface CompteService {
     boolean withdrawAmount(int currentUserId, float amount);
 
 
+    Compte getCompteByUserId(int id);
 }
 

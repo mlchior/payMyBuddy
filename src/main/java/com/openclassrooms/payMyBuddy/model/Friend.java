@@ -19,6 +19,11 @@ public class Friend {
         private User friend;
 
 
+    public Friend(User user, User friend) {
+        this.user = user;
+        this.friend = friend;
+    }
+
     public Friend(User friend) {
         this.friend = friend;
     }
