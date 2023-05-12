@@ -1,7 +1,5 @@
 package com.openclassrooms.payMyBuddy.controller;
 
-
-
 import com.openclassrooms.payMyBuddy.model.Friend;
 import com.openclassrooms.payMyBuddy.model.Transaction;
 import com.openclassrooms.payMyBuddy.model.User;
@@ -76,7 +74,6 @@ public class TransferController {
         int currentUserId = currentUser.getId();
         User friend = userService.getUserByEmail(email);
         friendService.createFriend(currentUserId, friend.getId());
-
 
         return "redirect:/transfer";
     }

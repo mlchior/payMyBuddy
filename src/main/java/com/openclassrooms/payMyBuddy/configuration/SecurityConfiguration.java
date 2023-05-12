@@ -33,16 +33,17 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((authz) -> authz
-                                .requestMatchers("/home").authenticated()
-                                .requestMatchers("/transfer").authenticated()
+                        .requestMatchers("/home").authenticated()
+                        .requestMatchers("/transfer").authenticated()
                         .anyRequest().authenticated()
                 )
                 .formLogin()
+                    .loginPage("/login")
+                    .permitAll()
                 .defaultSuccessUrl("/transfer", true)
                 .and()
                 .logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/login?logout")
+                .logoutSuccessUrl("/login")
                 .permitAll()
                 .and()
                 .httpBasic();

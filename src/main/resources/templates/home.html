@@ -8,6 +8,9 @@
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Importation de Modernizr -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+  <!-- Importation de Modernizr -->
   <script th:src="@{/js/Modernizr.js}"></script>
 
   <!-- Importation du fichier CSS personnalisé -->
@@ -20,9 +23,10 @@
 <!-- PAGINATION -->
 <div th:insert="pagination::pagination"></div>
 
-<!-- ACCOUNT AREA -->
-<div class="account_area">
-  <div class="container">
+<!-- ACCOUNT AREA-->
+
+<div class="account_area" style="display: flex; justify-content: center;">
+  <div class="container" style="width: fit-content;">
     <div class="account_text">
       <h3>Mon Compte</h3>
       <div class="balance">

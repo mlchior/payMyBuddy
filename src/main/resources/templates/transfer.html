@@ -16,7 +16,7 @@
 </head>
 <body>
 <!-- HEADER -->
-<div th:insert="header::header"></div>
+<div th:insert="(~{header::header})"></div>
 <!-- PAGINATION -->
 <div th:insert="pagination::pagination"></div>
 <!-- PAY AREA -->
@@ -38,14 +38,16 @@
               <button type="submit" class="btn_style btn_send">Add</button>
             </div>
           </form>
+
           <div class="arrowArea">
             <form id="carform" method="post" th:action="@{/transfer/submit}">
-              <div class="form-container">
+              <div class="form-container" style="justify-content: space-between">
                 <select id="selectedFriendId" name="selectedFriendId">
                   <option value="friend">Select A Connection</option>
                   <option th:each="friend : ${friends}" th:value="${friend.id}" th:text="${friend.friend.username}"></option>
                 </select>
-                <div class="input-number">
+
+                <div class="input-number"style="justify-content: space-between">
                   <input type="number" id="inuput-number" name="amount" value="0;" />
                   <button type="button" class="input-number-increment">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
@@ -59,9 +61,11 @@
                   </button>
                   <p>&euro;</p>
                 </div>
-                <input class="btn_style" type="submit" value="Pay" />
+
+                <input class="btn_style" style="justify-content: space-between" type="submit" value="Pay" />
               </div>
             </form>
+          </div>
           </div>
           </div>
         </div>
